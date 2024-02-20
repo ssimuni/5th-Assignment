@@ -18,6 +18,7 @@ const totalPriceElement = document.getElementById('total-price');
 const grandTotalElement = document.getElementById('grand-total');
 const couponCodeInput = document.getElementById('coupon-code');
 const applyButton = document.getElementById('apply');
+const couponhide = document.getElementById('couponhide');
 
 // Initialize counters
 let selectedSeats = 0;
@@ -99,16 +100,18 @@ seatButtons.forEach((button, index) => {
 });
 
 applyButton.addEventListener('click', () => {
-    const couponCode = couponCodeInput.value.trim().toLowerCase();
+    const couponCode = couponCodeInput.value.trim();
 
     // Check for valid coupon codes and update grand total accordingly
-    if (couponCode === 'new15') {
+    if (couponCode === 'New15') {
         grandTotal = totalAmount * 0.85; // 15% discount
-    } else if (couponCode === 'couple20') {
+    } else if (couponCode === 'Couple 20') {
         grandTotal = totalAmount * 0.8; // 20% discount
     } else {
         grandTotal = totalAmount; // No discount for invalid codes
     }
+
+    couponhide.style.display = 'none';
 
     // Display the updated grand total
     grandTotalElement.textContent = grandTotal;
